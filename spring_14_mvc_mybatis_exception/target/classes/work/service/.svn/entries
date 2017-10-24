@@ -1,0 +1,52 @@
+8
+
+dir
+7
+https://seojwproject.googlecode.com/svn/trunk/springmvc8-transaction/src/kosta/service
+https://seojwproject.googlecode.com/svn
+
+
+
+2009-11-04T01:55:01.368253Z
+7
+tico9922
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+d0d60084-c290-11de-a8ef-132414f8baa6
+
+MemberService.java
+file
+
+
+
+
+2009-11-04T01:56:36.203125Z
+340743c5af5c567e060b4d571736d75f
+2009-11-04T01:55:01.368253Z
+7
+tico9922
+
+MemberServiceImpl.java
+file
+
+
+
+
+2009-11-04T01:56:36.203125Z
+ad94425e58f35aa5e82114e301dfae12
+2009-11-04T01:55:01.368253Z
+7
+tico9922
+

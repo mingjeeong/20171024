@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/7/trunk/springmvc8-transaction/WebRoot/result
+END
+error.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/7/trunk/springmvc8-transaction/WebRoot/result/error.jsp
+END
+find_ok.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/7/trunk/springmvc8-transaction/WebRoot/result/find_ok.jsp
+END
+register_ok.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/7/trunk/springmvc8-transaction/WebRoot/result/register_ok.jsp
+END

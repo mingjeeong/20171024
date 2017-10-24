@@ -1,0 +1,22 @@
+package kosta.service;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+
+import kosta.dao.MemberDao;
+
+import kosta.vo.MemberVO;
+
+public interface MemberService {	
+	public void setDao(MemberDao dao);
+	public void registerMemberInfo(MemberVO vo,HashMap map) throws SQLException;	
+}
+
+
+
+
+
+
+
+

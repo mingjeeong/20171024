@@ -1,0 +1,38 @@
+package kosta.dao;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+
+import kosta.vo.MemberVO;
+/**
+ * Spring API(ORM) 에서는 SqlMapClientDaoSupport 클래스를 제공. 
+ *  이 클래스는 dataSource를 위한 변수와 IBatis의 SqlMapClient를 가지고 있고, 
+ *  이를 이용하여 사용자가 ibatis api를 사용할 수 있도록 getSqlMapClientTemplate()를 제공함으로써
+ *  손쉽게 연동할 수 있도록 지원한다. 
+ *  스프링 설정 파일에서는 DataSource 와 SqlMapClient 객체를 di 즉 주입해야 한다.
+ *   해당 클래스는 SqlMapClientDaoSupport를 상속받아 사용하면 된다.  
+ *   
+ * @author kosta
+ *
+ */
+public class MemberDaoImpl extends SqlMapClientDaoSupport implements MemberDao{
+	private Log log=LogFactory.getLog(getClass());
+
+	public void registerMember(MemberVO vo) throws SQLException {
+		getSqlMapClientTemplate().insert("member.insertMember",vo);		
+	}
+	public void registerMemberPoint(HashMap map) throws SQLException {
+		getSqlMapClientTemplate().insert("point.insertMemPoint",map);	
+		
+	}
+}
+
+
+
+
+

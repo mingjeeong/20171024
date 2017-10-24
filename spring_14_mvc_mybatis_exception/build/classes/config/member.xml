@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member">
+	<typeAlias alias="mem" type="kosta.vo.MemberVO" />
+	
+	<insert id="insertMember" parameterClass="mem">
+		insert into member(id,password,name,address) values(#id#,#password#,#name#,#address#)
+	</insert>
+	
+	<select id="findMember" resultClass="mem">
+		select id,password,name,address from member where id=#value#
+	</select>
+
+	<select id="findAllMemberByAddress" parameterClass="mem" resultClass="mem">
+		select * from member where address=#address#
+	</select>
+
+
+	<select id="findMemberMap" resultClass="java.util.HashMap">
+		select id, password, name, address from member where id=#value#
+	</select>
+	
+	<select id="findMemberMap1" resultClass="java.util.HashMap" parameterClass="java.util.HashMap">
+		select id, password, name, address from member where name=#n# and address=#addr#
+	</select>
+	
+	<delete id="deleteMember">
+		delete from member where id=#value#
+	</delete>
+	
+	<delete id="deleteMemberByVO" parameterClass="mem">
+		delete from member where name=#name# and address=#address#
+	</delete>
+	
+	<select id="getAllMemberList" resultClass="mem">
+		select id, password, name, address from member
+	</select>
+	
+	<select id="getAllMemberListByAddress" resultClass="mem">
+		select id, password, name, address from member where address=#value#
+	</select>
+	
+	<update id="updateMember" parameterClass="mem">
+		update member set password=#password#, name=#name#, address=#address# where id=#id#
+	</update>
+	
+	<select id="getAllMemberMap" resultClass="mem">
+		select * from member
+	</select>
+	
+	<select id="getAllMemberMap1" resultClass="mem" parameterClass="java.util.HashMap">
+		select * from member where address=#address# and name=#name#
+	</select>
+	
+	<select id="getMemberAddrList" resultClass="mem">
+		select * from member where name like '%' || #value# || '%'
+	</select>
+	
+</sqlMap>
+
+
+
+
+
+
+
+
+
+
+
+
+

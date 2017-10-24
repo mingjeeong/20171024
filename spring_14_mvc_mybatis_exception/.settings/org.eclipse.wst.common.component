@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="spring_step14MVC_4iBatisException">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <property name="java-output-path" value="/spring_step12MVC_4iBatis/build/classes"/>
+        <property name="context-root" value="spring14"/>
+    </wb-module>
+</project-modules>

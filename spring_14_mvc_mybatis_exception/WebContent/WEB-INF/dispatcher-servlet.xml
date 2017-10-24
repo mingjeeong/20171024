@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	 xmlns:p="http://www.springframework.org/schema/p" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     http://www.springframework.org/schema/aop 
+     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- mybatis config -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="WEB-INF/SqlMapConfig.xml" />
+		<property name="dataSource" ref="dataSource" />		
+	</bean>
+	
+	<!-- datasource config -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="hr"/>
+		<property name="password" value="tiger"/>
+	</bean>
+	
+	
+	<bean id="transactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		  p:dataSource-ref="dataSource" />
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	
+	<aop:config>
+		<aop:pointcut id="serviceInsertMethod" expression="within(work.service.*)" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceInsertMethod" /> 
+	</aop:config>
+	
+	
+	<bean id="mdao" class="work.dao.MemberDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	
+	<bean id="mservice" class="work.service.MemberServiceImpl">
+		<property name="dao">
+			<ref bean="mdao" />
+		</property>
+	</bean>
+	
+	<bean id="memberController" class="work.controller.MemberController">		
+		<property name="service">
+			<ref bean="mservice" />
+		</property>
+	</bean>
+		
+	
+	<!-- viewResolver : controller에서 이름을 지정하면 결과페이지를 찾아가는 방식 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/result/"></property> 
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+</beans>
